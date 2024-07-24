@@ -8,18 +8,18 @@ const DetailTicket = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [ticket, setTicket] = useState(null);
-  const [msg, setMsg] = useState('');
+  const [msg, setMsg] = useState("");
 
   const fetchTicket = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/pemesanan/${id}`);
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/pemesanan/${id}`);
 
       setTicket(response.data);
     } catch (error) {
       if (error.response) {
         setMsg(error.response.data.msg);
       } else {
-        setMsg('Tidak dapat terhubung ke server.');
+        setMsg("Tidak dapat terhubung ke server.");
       }
     }
   };
@@ -30,20 +30,20 @@ const DetailTicket = () => {
 
   const handleCancel = async () => {
     try {
-      await axios.post(`http://localhost:5000/pembayaran/cancel/${id}`);
-      setMsg('Tiket berhasil dibatalkan.');
-      navigate('/riwayatpemesanan');
+      await axios.post(`${import.meta.env.VITE_API_URL}/pembayaran/cancel/${id}`);
+      setMsg("Tiket berhasil dibatalkan.");
+      navigate("/riwayatpemesanan");
     } catch (error) {
       console.log(error);
       if (error.response) {
         setMsg(error.response.data.msg);
       } else {
-        setMsg('Tidak dapat membatalkan tiket.');
+        setMsg("Tidak dapat membatalkan tiket.");
       }
     }
   };
 
-  const isExpired = ticket && (new Date() - new Date(ticket.createdAt) > 24 * 60 * 60 * 1000);
+  const isExpired = ticket && new Date() - new Date(ticket.createdAt) > 24 * 60 * 60 * 1000;
   const isCancelled = ticket && ticket.pembayaran[0].status === "cancelled";
   const handleRedirect = () => {
     window.location.href = ticket.pembayaran[0].redirectUrl;
@@ -58,7 +58,9 @@ const DetailTicket = () => {
       <Container className="ticket-container">
         <Row className="ticket-row d-flex justify-content-between align-items-center">
           <Col className="ticket-details">
-            <Button variant="secondary" onClick={() => navigate('/riwayatpemesanan')} className="mb-3">Kembali</Button>
+            <Button variant="secondary" onClick={() => navigate("/riwayatpemesanan")} className="mb-3">
+              Kembali
+            </Button>
             {ticket ? (
               <>
                 <p>Id Pemesanan: {ticket.id}</p>
@@ -82,18 +84,21 @@ const DetailTicket = () => {
                   <i className="fa fa-info-circle"></i>
                   <p className="fw-semibold m-0">Status Pembayaran: {ticket.pembayaran[0].status}</p>
                 </span>
-                
+
                 {isExpired ? (
                   <p className="text-danger">Tiket hangus karena sudah melewati waktu 24 jam untuk pembayaran.</p>
                 ) : (
                   !isCancelled && (
                     <>
-                    <Button onClick={handleRedirect} className="mt-3">Lanjutkan Pembayaran</Button>
+                      <Button onClick={handleRedirect} className="mt-3">
+                        Lanjutkan Pembayaran
+                      </Button>
 
-                    <Button variant="danger" onClick={handleCancel}>Batalkan Pemesanan</Button>
+                      <Button variant="danger" onClick={handleCancel}>
+                        Batalkan Pemesanan
+                      </Button>
                     </>
                   )
-                  
                 )}
                 <Button variant="success" onClick={refreshhalaman} className="mt-3">
                   <i className="fa fa-refresh"></i>

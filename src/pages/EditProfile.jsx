@@ -20,7 +20,7 @@ const EditProfile = () => {
     // Fetch user data when the component mounts
     const fetchUser = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/users/${id}`);
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/users/${id}`);
         const user = response.data;
         setInstagram(user.instagram);
         setName(user.name);
@@ -51,7 +51,7 @@ const EditProfile = () => {
     }
 
     try {
-      await axios.put(`http://localhost:5000/users/${id}`, formData, {
+      await axios.put(`${import.meta.env.VITE_API_URL}/users/${id}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

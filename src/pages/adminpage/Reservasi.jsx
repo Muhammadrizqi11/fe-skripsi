@@ -13,7 +13,7 @@ const Reservasi = () => {
   const getPemesanans = async () => {
     const payload = JSON.parse(atob(token.split(".")[1]));
     try {
-      const response = await axios.get(`http://localhost:5000/pemesanan/owner/${payload.userId}`);
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/pemesanan/owner/${payload.userId}`);
       setPemesanans(response.data);
       console.log(response.data);
     } catch (error) {

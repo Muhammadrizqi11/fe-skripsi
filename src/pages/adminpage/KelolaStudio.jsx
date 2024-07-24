@@ -18,7 +18,7 @@ const KelolaStudio = () => {
 
   const getStudios = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/studio");
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/studio`);
       setStudio(response.data);
       console.log(response.data);
     } catch (error) {
@@ -39,7 +39,7 @@ const KelolaStudio = () => {
     const confirmed = window.confirm("Apakah Anda yakin ingin menghapus studio ini?");
     if (confirmed) {
       try {
-        await axios.delete(`http://localhost:5000/studio/${id}`);
+        await axios.delete(`${import.meta.env.VITE_API_URL}/studio/${id}`);
         getStudios();
       } catch (error) {
         console.log(error);

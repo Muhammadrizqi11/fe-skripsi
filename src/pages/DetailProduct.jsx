@@ -14,7 +14,7 @@ const DetailProduct = ({ user }) => {
   useEffect(() => {
     const fetchStudio = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/studio/${id}`);
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/studio/${id}`);
         setStudio(response.data);
       } catch (err) {
         setError(err.message);
@@ -23,7 +23,7 @@ const DetailProduct = ({ user }) => {
 
     const fetchBookings = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/pemesanan/studio/${id}`);
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/pemesanan/studio/${id}`);
         setBookings(Array.isArray(response.data) ? response.data : []);
       } catch (err) {
         setError(err.message);
@@ -65,12 +65,7 @@ const DetailProduct = ({ user }) => {
             <Col className="text-center">
               <h1 className="text-center fw-bold">{studio.name}</h1>
               <p className="text-center">{studio.description}</p>
-              {studio.image && (
-                <img
-                  src={getImageSrc(studio.image)}
-                  alt={studio.name}
-                />
-              )}
+              {studio.image && <img src={getImageSrc(studio.image)} alt={studio.name} />}
             </Col>
           </Row>
           <Row>

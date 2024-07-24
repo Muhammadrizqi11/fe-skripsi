@@ -15,16 +15,20 @@ const RegisterPage = () => {
   const Register = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/register", {
-        name: name,
-        email: email,
-        instagram: instagram,
-        role: "OWNER",
-        password: password,
-        confPassword: confPassword,
-      }, {
-        withCredentials: true // Include credentials
-      });
+      await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/register`,
+        {
+          name: name,
+          email: email,
+          instagram: instagram,
+          role: "OWNER",
+          password: password,
+          confPassword: confPassword,
+        },
+        {
+          withCredentials: true, // Include credentials
+        }
+      );
 
       navigate("/login");
     } catch (error) {
@@ -79,9 +83,9 @@ const RegisterPage = () => {
             </Col>
           </Row>
           <Row>
-          <Button onClick={Register} variant="primary" type="submit" className="btn-loginpage btn btn-dark btn-lg rounded-1 me-2 mb-xs-0 mb-2 mt-4 text-center align-item-center">
-                  Register
-                </Button>
+            <Button onClick={Register} variant="primary" type="submit" className="btn-loginpage btn btn-dark btn-lg rounded-1 me-2 mb-xs-0 mb-2 mt-4 text-center align-item-center">
+              Register
+            </Button>
           </Row>
           <Row>
             <Col className="text-center pt-2">

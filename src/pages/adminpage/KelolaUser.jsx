@@ -18,7 +18,7 @@ const KelolaUser = () => {
 
   const getUsers = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/users");
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/users`);
       setUser(response.data);
       console.log(response.data);
     } catch (error) {
@@ -51,7 +51,7 @@ const KelolaUser = () => {
 
   const deleteUser = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/user/${id}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/user/${id}`);
       getUsers();
     } catch (error) {
       if (axios.isAxiosError(error)) {

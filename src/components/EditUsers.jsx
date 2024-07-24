@@ -29,7 +29,7 @@ const EditUserModal = ({ show, handleClose, user, getUsers }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:5000/user/${user.id}`, formData);
+      await axios.put(`${import.meta.env.VITE_API_URL}/user/${user.id}`, formData);
       getUsers();
       handleClose();
     } catch (error) {

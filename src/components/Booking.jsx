@@ -107,7 +107,7 @@ const Booking = ({ studio, bookings = [] }) => {
     endDateTime.setHours(endDateTime.getHours() + duration);
     const accessToken = localStorage.getItem("accessToken");
     const { userId } = JSON.parse(atob(accessToken.split(".")[1]));
-    
+
     const orderData = {
       amount: totalPrice,
       customerDetails: customerDetails,
@@ -122,7 +122,7 @@ const Booking = ({ studio, bookings = [] }) => {
     };
 
     try {
-      const response = await axios.post("http://localhost:5000/pemesanan", orderData);
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/pemesanan`, orderData);
       const { redirect_url } = response.data;
       alert("Pemesanan berhasil! Klik OK untuk lanjut ke pembayaran.");
       window.location.href = redirect_url;

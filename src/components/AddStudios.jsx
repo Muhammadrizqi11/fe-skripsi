@@ -30,7 +30,7 @@ const AddStudios = ({ onClose, revalidate }) => {
     formData.append("userId", payload.userId);
 
     try {
-      await axios.post("http://localhost:5000/studio", formData, {
+      await axios.post(`${import.meta.env.VITE_API_URL}/studio`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

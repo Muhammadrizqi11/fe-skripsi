@@ -26,7 +26,7 @@ const RiwayatSewaStudio = () => {
           return;
         }
 
-        const response = await axios.get(`http://localhost:5000/pemesanan/user/${userId}`);
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/pemesanan/user/${userId}`);
         setRiwayat(response.data);
       } catch (err) {
         console.error("Terjadi kesalahan saat mengambil riwayat pemesanan:", err); // Log error

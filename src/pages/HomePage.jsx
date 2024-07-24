@@ -22,7 +22,7 @@ const HomePage = () => {
   useEffect(() => {
     const fetchKelasTerbaru = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/studio");
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/studio`);
         const semuaKelasServer = response.data;
 
         // Update data menyesuaikan bintang rating dan delay dengan data dari server

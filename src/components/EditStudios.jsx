@@ -23,7 +23,7 @@ const EditStudios = ({ studio, onClose }) => {
   const updateStudio = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`http://localhost:5000/studio/${studio.id}`, {
+      await axios.patch(`${import.meta.env.VITE_API_URL}/studio/${studio.id}`, {
         image,
         name,
         address,

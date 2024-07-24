@@ -15,7 +15,7 @@ const RegisterOwnerPage = () => {
   const RegisterOwner = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/users", {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/users`, {
         name,
         email,
         password,
@@ -70,7 +70,7 @@ const RegisterOwnerPage = () => {
                   <Form.Label>Instagram</Form.Label>
                   <Form.Control type="text" placeholder="Instagram" value={instagram} onChange={(e) => setInstagram(e.target.value)} />
                 </Form.Group>
-                <Button variant="primary" style={{fontsize: "15px !important"}}  type="submit" className="btn-loginpage btn btn-dark btn-lg rounded-1 me-2 mb-xs-0 mb-2 mt-4 text-center align-item-center">
+                <Button variant="primary" style={{ fontsize: "15px !important" }} type="submit" className="btn-loginpage btn btn-dark btn-lg rounded-1 me-2 mb-xs-0 mb-2 mt-4 text-center align-item-center">
                   Daftar
                 </Button>
               </Form>

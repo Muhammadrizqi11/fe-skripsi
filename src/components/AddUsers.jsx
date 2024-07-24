@@ -26,7 +26,7 @@ const AddUsers = () => {
     formData.append("password", password);
 
     try {
-      await axios.post("http://localhost:5000/users", formData, {
+      await axios.post(`${import.meta.env.VITE_API_URL}/users`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

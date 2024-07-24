@@ -16,7 +16,7 @@ const useAuth = () => {
           setIsAuthenticated(false);
           return;
         }
-        const response = await axios.get("http://localhost:5000/user", {
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/user`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUserRole(response.data.role);
