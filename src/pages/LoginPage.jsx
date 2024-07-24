@@ -67,7 +67,7 @@ const LoginPage = () => {
           </Row>
           <Row>
             <Col className="text-center pt-2">
-              <a href="/regisfor" className=" text-black">
+              <a href="/register" className=" text-black">
                 Belum mempunyai akun?
               </a>
             </Col>
