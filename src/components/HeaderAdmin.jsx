@@ -35,7 +35,12 @@ function HeaderAdmin() {
 
   const ProfileMenu = () => (
     <span onClick={handleDropdownToggle} className="profile-menu">
-      <img src="\assets\img\testimonial\people-1.jpg" alt="Profile" style={{ borderRadius: "50%", marginRight: "8px", maxWidth: "30px" }} />
+      <img
+        src="
+      \assets\img\testimonial\people-1.jpg"
+        alt="Profile"
+        style={{ borderRadius: "50%", marginRight: "8px", maxWidth: "30px" }}
+      />
       {payload.name}
     </span>
   );

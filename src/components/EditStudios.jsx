@@ -3,7 +3,7 @@ import axios from "axios";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
-const EditStudios = ({ studio, onClose }) => {
+const EditStudios = ({ studio, onClose, revalidate }) => {
   const [image, setImage] = useState(studio.image || "");
   const [name, setName] = useState(studio.name || "");
   const [address, setAddress] = useState(studio.address || "");
@@ -32,6 +32,7 @@ const EditStudios = ({ studio, onClose }) => {
       });
       console.log("Studio updated successfully");
       onClose(); // Tutup modal setelah update
+      revalidate();
       navigate("/dashboard/kelola");
     } catch (error) {
       console.log("Terjadi kesalahan saat menyimpan studio:", error.response ? error.response.data : error.message);
@@ -43,7 +44,7 @@ const EditStudios = ({ studio, onClose }) => {
     <Form onSubmit={updateStudio} className="p-4">
       <Form.Group className="mb-3" controlId="formImage">
         <Form.Label>Gambar</Form.Label>
-        <Form.Control type="text" placeholder="Gambar" value={image} onChange={(e) => setImage(e.target.value)} />
+        <Form.Control type="file" accept="image/*" placeholder="Gambar" value={image} onChange={(e) => setImage(e.target.value)} />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formName">
         <Form.Label>Nama Studio</Form.Label>

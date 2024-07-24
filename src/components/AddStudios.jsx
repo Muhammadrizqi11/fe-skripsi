@@ -50,7 +50,7 @@ const AddStudios = ({ onClose, revalidate }) => {
       {error && <Alert variant="danger">{error}</Alert>}
       <Form.Group className="mb-3" controlId="formImage">
         <Form.Label>Gambar</Form.Label>
-        <Form.Control type="file" onChange={(e) => setImage(e.target.files[0])} />
+        <Form.Control accept="image/*" type="file" onChange={(e) => setImage(e.target.files[0])} />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formName">
         <Form.Label>Nama Studio</Form.Label>
