@@ -76,7 +76,7 @@ const RegisterOwnerPage = () => {
               </Form>
             </Col>
             <Col>
-              <img src="src/assets/img/lampu.png" alt="GoPro" className="logoregis text-center mb-2" />
+              <img src="/assets/img/lampu.png" alt="GoPro" className="logoregis text-center mb-2" />
             </Col>
           </Row>
           <Row>

@@ -62,7 +62,7 @@ const LoginPageOwner = () => {
               {msg && <p>{msg}</p>}
             </Col>
             <Col>
-              <img src="./src/assets/img/gopro.png" alt="GoPro" className="text-center mb-2" />
+              <img src="/assets/img/gopro.png" alt="GoPro" className="text-center mb-2" />
             </Col>
           </Row>
           <Row>
