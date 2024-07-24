@@ -32,7 +32,7 @@ const EditStudios = ({ studio, onClose }) => {
       });
       console.log("Studio updated successfully");
       onClose(); // Tutup modal setelah update
-      navigate("/kelola");
+      navigate("/dashboard/kelola");
     } catch (error) {
       console.log("Terjadi kesalahan saat menyimpan studio:", error.response ? error.response.data : error.message);
       alert("Gagal menyimpan studio: " + (error.response ? error.response.data.error : error.message));
