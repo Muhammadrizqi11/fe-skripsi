@@ -44,7 +44,7 @@ const EditStudios = ({ studio, onClose, revalidate }) => {
     <Form onSubmit={updateStudio} className="p-4">
       <Form.Group className="mb-3" controlId="formImage">
         <Form.Label>Gambar</Form.Label>
-        <Form.Control type="file" accept="image/*" placeholder="Gambar" value={image} onChange={(e) => setImage(e.target.value)} />
+        <Form.Control type="text" placeholder="Gambar" value={image} onChange={(e) => setImage(e.target.value)} />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formName">
         <Form.Label>Nama Studio</Form.Label>
