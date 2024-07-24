@@ -12,7 +12,7 @@ const LoginPage = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/login", { email, password });
+      const response = await axios.post(`${process.env.API_URL_PROD}/login`, { email, password });
       localStorage.setItem("accessToken", response.data.accessToken);
 
       const payload = JSON.parse(atob(response.data.accessToken.split(".")[1]));
