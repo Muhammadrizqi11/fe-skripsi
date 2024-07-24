@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Container, Row, Col, Form, Button, Image } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { getImageSrc } from "../data/fun";
 
 const EditStudios = ({ studio, onClose, revalidate }) => {
   const [image, setImage] = useState(studio.image || "");
@@ -44,7 +45,7 @@ const EditStudios = ({ studio, onClose, revalidate }) => {
     <Form onSubmit={updateStudio} className="p-4">
       <Form.Group className="mb-3" controlId="formImage">
         <Form.Label>Gambar</Form.Label>
-        <Form.Control type="text" placeholder="Gambar" value={image} onChange={(e) => setImage(e.target.value)} />
+        <Image src={getImageSrc(image)} alt={name} rounded style={{ height: "64px", width: "64px", objectFit: "cover" }} />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formName">
         <Form.Label>Nama Studio</Form.Label>
