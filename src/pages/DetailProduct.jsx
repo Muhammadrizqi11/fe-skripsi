@@ -64,7 +64,7 @@ const DetailProduct = ({ user }) => {
           <Row>
             <Col className="text-center">
               <h1 className="text-center fw-bold">{studio.name}</h1>
-              <p className="text-center">{studio.description}</p>
+              <p className="text-center">{studio.address}</p>
               {studio.image && <img src={getImageSrc(studio.image)} alt={studio.name} />}
             </Col>
           </Row>
@@ -78,7 +78,7 @@ const DetailProduct = ({ user }) => {
                     <li>
                       <i className="fa-solid fa-location-dot"></i>
                       <p className="fw-medium text-dark mt-2">
-                        Alamat: <span className="fw-light opacity-75">{studio.address}</span>
+                        Deskripsi: <span className="fw-light opacity-75">{studio.description}</span>
                       </p>
                     </li>
                   </ul>
