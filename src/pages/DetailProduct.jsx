@@ -76,7 +76,7 @@ const DetailProduct = ({ user }) => {
                 <div className="col-lg-12">
                   <ul className="d-flex flex-wrap gap-4 text-center">
                     <li>
-                      <i className="fa-solid fa-location-dot"></i>
+                      <i className="fa-solid fa-circle-info"></i>
                       <p className="fw-medium text-dark mt-2">
                         Deskripsi: <span className="fw-light opacity-75">{studio.description}</span>
                       </p>

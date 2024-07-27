@@ -13,6 +13,12 @@ const RegisterPage = () => {
 
   const Register = async (e) => {
     e.preventDefault();
+
+    if (password.length < 8) {
+      setMsg("Password harus minimal 8 karakter.");
+      return;
+    }
+
     try {
       const response = await axios.post(`${import.meta.env.VITE_API_URL}/users`, {
         name,
