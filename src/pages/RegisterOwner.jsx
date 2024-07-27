@@ -14,6 +14,12 @@ const RegisterOwnerPage = () => {
 
   const RegisterOwner = async (e) => {
     e.preventDefault();
+
+    if (password.length < 8) {
+      setMsg("password minimal 8 karakter");
+      return;
+    }
+
     try {
       const response = await axios.post(`${import.meta.env.VITE_API_URL}/users`, {
         name,
@@ -48,6 +54,7 @@ const RegisterOwnerPage = () => {
           <Row className="row-cols-lg-2 row cols-1">
             <Col>
               <Form onSubmit={RegisterOwner}>
+                {msg && <div className="alert alert-danger">{msg}</div>}
                 <Form.Group controlId="formBasicName">
                   <Form.Label>Name</Form.Label>
                   <Form.Control type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />

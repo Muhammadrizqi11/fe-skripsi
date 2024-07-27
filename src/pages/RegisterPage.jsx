@@ -19,6 +19,11 @@ const RegisterPage = () => {
       return;
     }
 
+    if (password !== confPassword) {
+      setMsg("Password dan konfirmasi password tidak cocok.");
+      return;
+    }
+
     try {
       const response = await axios.post(`${import.meta.env.VITE_API_URL}/users`, {
         name,
