@@ -51,6 +51,7 @@ const RegisterPage = () => {
           <Row className="row-cols-lg-2 row cols-1">
             <Col>
               <Form onSubmit={Register}>
+                {msg && <div className="alert alert-danger">{msg}</div>}
                 <Form.Group controlId="formBasicName">
                   <Form.Label>Name</Form.Label>
                   <Form.Control type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
