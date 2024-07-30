@@ -14,11 +14,6 @@ const RegisterPage = () => {
   const Register = async (e) => {
     e.preventDefault();
 
-    if (password.length < 8) {
-      setMsg("Password harus minimal 8 karakter.");
-      return;
-    }
-
     if (password !== confPassword) {
       setMsg("Password dan konfirmasi password tidak cocok.");
       return;

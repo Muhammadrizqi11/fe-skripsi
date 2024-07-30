@@ -15,8 +15,8 @@ const RegisterOwnerPage = () => {
   const RegisterOwner = async (e) => {
     e.preventDefault();
 
-    if (password.length < 8) {
-      setMsg("password minimal 8 karakter");
+    if (password !== confPassword) {
+      setMsg("Password dan konfirmasi password tidak cocok.");
       return;
     }
 
