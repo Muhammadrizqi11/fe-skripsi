@@ -71,7 +71,7 @@ const HomePage = () => {
                 Abadikan <br /> <span>Momen Berhargamu</span> <br />
                 Bersama Kami!
               </h1>
-              <p className="mb-4 animate__animated animate__fadeInLeft ">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repudiandae placeat voluptate, maiores ipsum est iure.</p>
+              <p className="mb-4 animate__animated animate__fadeInLeft ">Waktu memang tidak dapat diputar tetapi kenangan selalu bisa di lihat</p>
               <button className="btn btn-dark -btn-lg rounded-1 me-2 mb-xs-0 mb-2 animate__animated animate__fadeInLeft animate__delay-1s" onClick={() => navigate("/fotografer")}>
                 Lihat Fotografer
               </button>
