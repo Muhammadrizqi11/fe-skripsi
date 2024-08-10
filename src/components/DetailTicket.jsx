@@ -3,12 +3,14 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import withAuth from "../hoc/withAuth";
+import ReviewModal from "./Review";
 
 const DetailTicket = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [ticket, setTicket] = useState(null);
   const [msg, setMsg] = useState("");
+  const [showReviewModal, setShowReviewModal] = useState(false);
 
   const fetchTicket = async () => {
     try {
@@ -43,8 +45,12 @@ const DetailTicket = () => {
     }
   };
 
-  const isExpired = ticket && new Date() - new Date(ticket.createdAt) > 24 * 60 * 60 * 1000;
+  // const isExpired = ticket && new Date() - new Date(ticket.createdAt) > 24 * 60 * 60 * 1000;
   const isCancelled = ticket && ticket.pembayaran[0].status === "cancelled";
+  const isSuccess = ticket && ticket.pembayaran[0].status === "success";
+  const isPending = ticket && ticket.pembayaran[0].status === "pending";
+  const isExpired = ticket && ticket.pembayaran[0].status === "expired";
+
   const handleRedirect = () => {
     window.location.href = ticket.pembayaran[0].redirectUrl;
   };
@@ -53,6 +59,18 @@ const DetailTicket = () => {
     window.location.reload();
   };
 
+  const handleAddReview = () => {
+    setShowReviewModal(true);
+  };
+
+  const handleCloseReviewModal = () => {
+    setShowReviewModal(false);
+  };
+
+  const handleSaveReview = (review) => {
+    console.log("Review saved", review);
+    setShowReviewModal(false);
+  };
   return (
     <div className="riwayat-page">
       <Container className="ticket-container">
@@ -85,7 +103,24 @@ const DetailTicket = () => {
                   <p className="fw-semibold m-0">Status Pembayaran: {ticket.pembayaran[0].status}</p>
                 </span>
 
-                {isExpired ? (
+                <>
+                  {isPending && (
+                    <>
+                      <Button onClick={handleRedirect}>Lanjutkan Pembayaran</Button>
+                      <Button variant="danger" onClick={handleCancel}>
+                        Batalkan Pemesanan
+                      </Button>
+                    </>
+                  )}
+
+                  {isSuccess && <Button onClick={handleAddReview}>Tambah Review</Button>}
+
+                  {isExpired && <p>Status pembayaran sudah expired.</p>}
+
+                  {isCancelled && <p>Status pembayaran dibatalkan.</p>}
+                </>
+
+                {/* {isExpired ? (
                   <p className="text-danger">Tiket hangus karena sudah melewati waktu 24 jam untuk pembayaran.</p>
                 ) : (
                   !isCancelled && (
@@ -99,8 +134,8 @@ const DetailTicket = () => {
                       </Button>
                     </>
                   )
-                )}
-                <Button variant="success" onClick={refreshhalaman} className="mt-3">
+                )} */}
+                <Button variant="success" onClick={refreshhalaman} style={{ marginLeft: "8px" }}>
                   <i className="fa fa-refresh"></i>
                 </Button>
               </>
@@ -110,10 +145,11 @@ const DetailTicket = () => {
           </Col>
           <Col>
             {msg && <p>{msg}</p>}
-            {ticket && <img src={`data:image/jpeg;base64,${ticket.studio.image}`} alt={ticket.studio.name} className="rounded-3 ticket-image text-right" />}
+            {ticket && <img src={ticket.studio.image} alt={ticket.studio.name} className="rounded-3 ticket-image text-right" />}
           </Col>
         </Row>
       </Container>
+      <ReviewModal show={showReviewModal} handleClose={handleCloseReviewModal} handleSave={handleSaveReview} />
     </div>
   );
 };

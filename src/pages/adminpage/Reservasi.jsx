@@ -33,13 +33,6 @@ const Reservasi = () => {
         </Breadcrumb>
       </div>
       <div style={{ backgroundColor: "#ffffff", boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)", padding: "16px", borderRadius: "6px" }}>
-        <p className="mt-2">
-          Semua pemesanan studio akan ditampilkan di tabel dan hanya Admin/Owner Studio yang dapat menjalankan perintah
-          <a href="#" target="_blank">
-            Create, Read, Update, dan Delete
-          </a>{" "}
-          untuk data <code>Studio</code>
-        </p>
         <Table hover size="min-vh-200 mt-5">
           <thead>
             <tr className="fw-bold">

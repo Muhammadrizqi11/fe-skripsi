@@ -129,7 +129,6 @@ const Booking = ({ studio, bookings = [] }) => {
     } catch (error) {
       console.error("Failed to create booking:", error);
       alert("Terjadi kesalahan saat melakukan pemesanan. Silahkan coba lagi.");
-      window.location.reload(); // Refresh halaman setelah menampilkan alert
     }
   };
 

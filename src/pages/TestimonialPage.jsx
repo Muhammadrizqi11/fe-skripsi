@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { testimonial } from "../data/index";
+import RiwayatOrder from "../components/RiwayatOrder";
 
 import FaqComponent from "../components/FaqComponent";
 
@@ -30,6 +31,11 @@ const TestimonialPage = () => {
                 </Col>
               );
             })}
+          </Row>
+          <Row>
+            <Col>
+              <RiwayatOrder />
+            </Col>
           </Row>
         </Container>
       </div>

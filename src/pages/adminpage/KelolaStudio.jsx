@@ -18,9 +18,12 @@ const KelolaStudio = () => {
 
   const getStudios = async () => {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_API_URL}/studio`);
+      const accessToken = localStorage.getItem("accessToken");
+      const payload = JSON.parse(atob(accessToken.split(".")[1]));
+      const userId = payload.userId;
+
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/studio/owner/${userId}`);
       setStudio(response.data);
-      console.log(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -77,6 +80,7 @@ const KelolaStudio = () => {
             <tr className="fw-bold">
               <th>Gambar</th>
               <th>Nama Studio</th>
+              <th>Nama Paket</th>
               <th>Alamat</th>
               <th>Harga</th>
               <th>Deskripsi</th>
@@ -84,30 +88,39 @@ const KelolaStudio = () => {
             </tr>
           </thead>
           <tbody>
-            {studios.map((studio, index) => (
-              <tr key={index}>
-                <td>
-                  <Image src={getImageSrc(studio.image)} alt={studio.name} rounded style={{ height: "64px", width: "64px", objectFit: "cover" }} />
-                </td>
-                <td>{studio.name}</td>
-                <td>{studio.address}</td>
-                <td>{studio.price}</td>
-                <td style={{ maxWidth: "200px" }}>{studio.description}</td>
-                <td className="col-lg-1">
-                  <div className="d-flex flex-column gap-2">
-                    <Button type="button" className="btn btn-secondary">
-                      <i className="fa-solid fa-eye"></i>
-                    </Button>
-                    <Button type="button" className="btn btn-info" onClick={() => handleEditShow(studio)}>
-                      <i className="fa-solid fa-pen-to-square" style={{ color: "white" }}></i>
-                    </Button>
-                    <Button onClick={() => deleteStudio(studio.id)} type="button" className="btn btn-danger">
-                      <i className="fa fa-trash"></i>
-                    </Button>
-                  </div>
+            {studios.length === 0 ? (
+              <tr>
+                <td colSpan={6} align="center">
+                  Belum ada studio
                 </td>
               </tr>
-            ))}
+            ) : (
+              studios.map((studio, index) => (
+                <tr key={index}>
+                  <td>
+                    <Image src={getImageSrc(studio.image)} alt={studio.name} rounded style={{ height: "64px", width: "64px", objectFit: "cover" }} />
+                  </td>
+                  <td>{studio.name}</td>
+                  <td>{studio.paket}</td>
+                  <td>{studio.address}</td>
+                  <td>{studio.price}</td>
+                  <td style={{ maxWidth: "200px" }}>{studio.description}</td>
+                  <td className="col-lg-1">
+                    <div className="d-flex flex-column gap-2">
+                      <Button type="button" className="btn btn-secondary">
+                        <i className="fa-solid fa-eye"></i>
+                      </Button>
+                      <Button type="button" className="btn btn-info" onClick={() => handleEditShow(studio)}>
+                        <i className="fa-solid fa-pen-to-square" style={{ color: "white" }}></i>
+                      </Button>
+                      <Button onClick={() => deleteStudio(studio.id)} type="button" className="btn btn-danger">
+                        <i className="fa fa-trash"></i>
+                      </Button>
+                    </div>
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </Table>
       </div>

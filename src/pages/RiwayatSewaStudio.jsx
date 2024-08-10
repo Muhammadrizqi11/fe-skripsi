@@ -69,7 +69,7 @@ const RiwayatSewaStudio = () => {
                 <p className="fw-semibold m-0">Detail Tiket</p>
               </Link>
             </Col>
-            <Col>{reservation.studio.image && <img src={`data:image/jpeg;base64,${reservation.studio.image}`} alt={reservation.studio.name} className="rounded-3 ticket-image text-right" />}</Col>
+            <Col>{reservation.studio.image && <img src={reservation.studio.image} alt={reservation.studio.name} className="rounded-3 ticket-image text-right" />}</Col>
           </Row>
         ))}
       </Container>

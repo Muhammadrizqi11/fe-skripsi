@@ -103,7 +103,34 @@ const HomePage = () => {
                     <i className={kelas.star4}></i>
                     <i className={kelas.star5}></i>
                   </div>
-                  <h5 className="mb-5 px-3">{kelas.name}</h5>
+                  <h5 className=" px-3">{kelas.name}</h5>
+                  <h3
+                    className=""
+                    style={{
+                      fontSize: "1rem",
+                      fontFamily: "sans-serif",
+                      fontWeight: "bold",
+                      color: "#6c757d", // Warna teks abu-abu (secondary)
+                      padding: "5px 20px",
+                      margin: "0", // Menghapus margin untuk tampilan yang lebih kompak
+                    }}
+                  >
+                    {kelas.paket}
+                  </h3>
+
+                  <p
+                    className="fa-solid fa-location-dot"
+                    style={{
+                      fontSize: "0.85rem", // Sedikit lebih kecil dari teks paket
+                      color: "#495057", // Warna abu-abu lebih gelap untuk keterbacaan lebih baik
+                      marginTop: "5px", // Tambahkan margin kecil di atas untuk spasi
+                      marginBottom: "10px", // Spasi di bawah alamat untuk elemen berikutnya
+                      paddingLeft: "15px", // Padding kiri dan kanan untuk keselarasan
+                      paddingRight: "15px",
+                    }}
+                  >
+                    {kelas.address}
+                  </p>
                   <div className="ket d-flex justify-content-between align-items-center px-3 pb-3">
                     <p className="m-0 text-primary fw-bold">{kelas.price}</p>
                     <Link to={`/product/${kelas.id}`} className="btn btn-dark rounded-1">

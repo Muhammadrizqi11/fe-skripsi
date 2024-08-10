@@ -93,6 +93,12 @@ const SideBar = () => {
                 </li>
               </ul>
             </li>
+            <li className="nav-item">
+              <a className="nav-link collapsed" href="/dashboard/withdraw">
+                <i className="fa fa-credit-card"></i>
+                <span>Withdraw</span>
+              </a>
+            </li>
           </>
         )}
 

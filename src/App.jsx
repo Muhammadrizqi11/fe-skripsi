@@ -25,6 +25,7 @@ import KelolaUser from "./pages/adminpage/KelolaUser";
 import Reservasi from "./pages/adminpage/Reservasi";
 import AddUsers from "./components/AddUsers";
 import EditUserModal from "./components/EditUsers";
+import Withdraw from "./pages/adminpage/Withdraw";
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
           <Route path="kelola" element={<KelolaStudio />} />
           <Route path="kelolauser" element={<KelolaUser />} />
           <Route path="reservasi" element={<Reservasi />} />
+          <Route path="withdraw" element={<Withdraw />} />
         </Route>
       </Routes>
     </>
